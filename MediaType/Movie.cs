@@ -10,6 +10,7 @@ namespace MovieLibrary_A7.MediaType
         public int movieId { get; set; }
         public string movieTitle{get; set;}
         public List<string> movieGenres { get; set; }
+
         public string movieFilePath = "movies.csv";
 
 

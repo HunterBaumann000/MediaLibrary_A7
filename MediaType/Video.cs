@@ -21,5 +21,10 @@ namespace MovieLibrary_A7.MediaType
         {
             return $"Id: {videoId}, Title: {videoTitle}, Format: {videoFormat}, Length: {videoLength} minutes, VideoRegions: {string.Join(", ", videoRegions)}";
         }
+
+        internal static int Max(Func<object, object> p)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
