@@ -14,6 +14,5 @@ namespace MediaLibrary_A7.Interfaces
         List<Video> Videos { get; set; }
         void AddVideo(Video video);
         
-
     }
 }

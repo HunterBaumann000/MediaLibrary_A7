@@ -30,7 +30,7 @@ namespace MovieLibrary_A7
         }
         
         public void DisplayMainMenu() {
-            System.Console.WriteLine("");
+            System.Console.WriteLine(" ");
             System.Console.WriteLine("What would you like to do?");
             System.Console.WriteLine("   1.) Add a Media.");
             System.Console.WriteLine("   2.) Display a list of media.");
