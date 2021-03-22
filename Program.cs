@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Collections.Generic;
-using MediaLibrary_A7;
+using MovieLibrary_A7.MediaType;
 
 namespace MovieLibrary_A7
 {
@@ -64,24 +64,29 @@ namespace MovieLibrary_A7
                     if (userInput == "1") 
                     {
                         // Display All Movies
-                        foreach(Movie m in movieFile.Movies)
+                        for (int i = 0; i < movieFile.Movies.Count; i++)
                         {
+                            Movie m = movieFile.Movies[i];
                             Console.WriteLine(m.displayMovieFormatted());
                         }
                     } 
                     else if (userInput == "2") 
                     {
                         // Display All Shows
-                        foreach(Show s in showFile.Shows)
+                        System.Collections.IList list = showFile.Shows;
+                        for (int i = 0; i < list.Count; i++)
                         {
+                            Show s = (Show)list[i];
                             Console.WriteLine(s.displayShowFormatted());
                         }
                     } 
                     else if (userInput == "3") 
                     {
                         // Display All Videos
-                        foreach(Video v in videoFile.Videos)
+                        System.Collections.IList list = videoFile.Videos;
+                        for (int i = 0; i < list.Count; i++)
                         {
+                            Video v = (Video)list[i];
                             Console.WriteLine(v.displayVideoFormatted());
                         }
                     }

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
-using MediaLibrary_A7;
+using MediaLibrary_A7.Interfaces;
+using MovieLibrary_A7.MediaType;
 
 namespace MovieLibrary_A7
 {
