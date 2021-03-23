@@ -9,9 +9,18 @@ namespace MediaLibrary_A7
     public class Repository : IRepository
     {
 
-        public List<Movie> Movies { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-        public List<Show> Shows { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-        public List<Video> Videos { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+        public List<Movie> Movies { 
+            get => throw new System.NotImplementedException(); 
+            set => throw new System.NotImplementedException(); 
+            }
+        public List<Show> Shows { 
+            get => throw new System.NotImplementedException(); 
+            set => throw new System.NotImplementedException(); 
+            }
+        public List<Video> Videos { 
+            get => throw new System.NotImplementedException(); 
+            set => throw new System.NotImplementedException(); 
+            }
 
         public void AddMovie(Movie movie)
         {

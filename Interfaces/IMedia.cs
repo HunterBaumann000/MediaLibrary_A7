@@ -5,6 +5,6 @@ namespace MediaLibrary_A7.Interfaces
 {
     public interface IMedia
     {
-      //Maybe I need this   
+      //Not sure how id go about implementing this interface  
     }
 }
