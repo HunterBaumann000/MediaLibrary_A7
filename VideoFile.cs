@@ -32,10 +32,10 @@ namespace MovieLibrary_A7
             try
             {
                 // iterate through each video obj until theres no more greater, then add one
-                video.videoId = Videos.Max(v => v.videoId) + 1;
+                video.mediaId = Videos.Max(v => v.mediaId) + 1;
                 StreamWriter sw = new StreamWriter(filePath, true);
                 
-                sw.WriteLine($"Id: {video.videoId}, Title: {video.videoTitle}, Format: {video.videoFormat}, Length: {video.videoLength} minutes, VideoRegions: {string.Join(", ", video.videoRegions)}");
+                sw.WriteLine(video.Display());
                 sw.Close();
                 
                 // add video details to Lists
@@ -67,8 +67,8 @@ namespace MovieLibrary_A7
                     string line = sr.ReadLine();
 
                     string[] videoLine = line.Split(',');
-                    video.videoId = int.Parse(videoLine[0]);
-                    video.videoTitle = videoLine[1];
+                    video.mediaId = int.Parse(videoLine[0]);
+                    video.title = videoLine[1];
                     video.videoFormat = videoLine[2];
                     video.videoLength = int.Parse(videoLine[3]);
                     video.videoRegions = videoLine[4].Split('|').ToList();
@@ -83,11 +83,15 @@ namespace MovieLibrary_A7
                 Console.WriteLine(e.Message);
             }
         }
-        
+
+        public VideoFile()
+        {
+        }
+
         public bool hasSameTitle(string videoTitle)
         {
             //convert all video objects to lowercase, and if that instance contains the title, return true
-            if (Videos.ConvertAll(v => v.videoTitle.ToLower()).Contains(videoTitle.ToLower()))
+            if (Videos.ConvertAll(v => v.title.ToLower()).Contains(videoTitle.ToLower()))
             {
                 Console.WriteLine("{Title} is a duplicate in the file", videoTitle);
                 return true;

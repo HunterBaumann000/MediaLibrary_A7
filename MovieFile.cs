@@ -32,9 +32,9 @@ namespace MovieLibrary_A7
             
             try {
                 // iterate through each movie obj until theres no more greater, then add one to ID
-                movie.movieId = Movies.Max(m => m.movieId) + 1;
+                movie.mediaId = Movies.Max(m => m.mediaId) + 1;
                 StreamWriter sw = new StreamWriter(filePath, true);
-                sw.WriteLine($"{movie.movieId},{movie.movieTitle},{string.Join("|", movie.movieGenres)}");
+                sw.WriteLine(movie.Display());
                 sw.Close();
                 
                 // add movie to list
@@ -68,9 +68,9 @@ namespace MovieLibrary_A7
                     string[] movieLine = line.Split(',');
 
                     //fields that go into the string
-                    movie.movieId = int.Parse(movieLine[0]);
-                    movie.movieTitle = movieLine[1];
-                    movie.movieGenres = movieLine[2].Split('|').ToList();
+                    movie.mediaId = int.Parse(movieLine[0]);
+                    movie.title = movieLine[1];
+                    movie.genres = movieLine[2].Split('|').ToList();
                     
                     //adds movie to file
                     Console.WriteLine(movieLine);
@@ -84,11 +84,16 @@ namespace MovieLibrary_A7
                 Console.WriteLine(e.Message);
             }
         }
-        public bool hasSameTitle(string movieTitle)
+
+        public MovieFile()
+        {
+        }
+
+        public bool hasSameTitle(string title)
         {
             //convert all movie objects to lowercase, and if that instance contains the title, return true
-            if (Movies.ConvertAll(m => m.movieTitle.ToLower()).Contains(movieTitle.ToLower())){
-                Console.WriteLine("{Title} is a duplicate in the file", movieTitle);
+            if (Movies.ConvertAll(m => m.title.ToLower()).Contains(title.ToLower())){
+                Console.WriteLine("{Title} is a duplicate in the file", title);
                 return true;
             }
             return false;

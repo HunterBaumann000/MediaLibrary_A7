@@ -5,13 +5,13 @@ namespace MediaLibrary_A7.Interfaces
 {
     public interface IRepository
     {
-        List<Movie> Movies { get; set; }
+        public List<Movie> GetMovies { get; set; }
         void AddMovie(Movie movie);
         
-        List<Show> Shows { get; set; }
+        public List<Show> GetShows { get; set; }
         void AddShow(Show show);
 
-        List<Video> Videos { get; set; }
+        List<Video> GetVideos { get; set; }
         void AddVideo(Video video);
         
     }

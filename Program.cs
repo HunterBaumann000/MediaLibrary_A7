@@ -2,6 +2,7 @@
 using System.IO;
 using System.Collections.Generic;
 using MovieLibrary_A7.MediaType;
+using Newtonsoft.Json;
 
 namespace MovieLibrary_A7
 {
@@ -20,7 +21,7 @@ namespace MovieLibrary_A7
             VideoFile videoFile = new VideoFile(videoFilePath);
 
             //menu class
-            var menu = new Menus(IMenus);
+            Menus menus = new Menus();
 
             //declaring userInput so the scanner menu input works
             string userInput = "";
@@ -28,7 +29,7 @@ namespace MovieLibrary_A7
             do
             {
                 // displays main menu
-                menu.DisplayMainMenu();
+                menus.DisplayMainMenu();
                 // scanner
                 userInput = Console.ReadLine();
 
@@ -36,65 +37,76 @@ namespace MovieLibrary_A7
                 if (userInput == "1") 
                 {
                     //displays which MediaType they want to add
-                    menu.DisplayMediaTypeMenu();
+                    menus.DisplayMediaTypeMenu();
                     userInput = Console.ReadLine();
 
-                    if(userInput == "1") 
+                    switch (userInput)
                     {
-                        //movie menu
-                        Menus.askUserForMovie(userInput);
-                    } 
-                    else if (userInput == "2") 
-                    {
-                        //show menu
-                        Menus.askUserForShow(userInput);
+                        case "1":
+                            //movie menu
+                            Menus.askUserForMovie(userInput);
+                            break;
+                        case "2":
+                            //show menu
+                            Menus.askUserForShow(userInput);
+                            break;
+                        case "3":
+                            //video menu
+                            Menus.askUserForVideo(userInput);
+                            break;
                     }
-                    else if(userInput == "3")
-                    {
-                        //video menu
-                        Menus.askUserForVideo(userInput);
-                    } 
                 }
                 else if (userInput == "2")
                 {
                     //displays menu for reading the media from the file
-                    menu.DisplayReadMediaMenu();
+                    menus.DisplayReadMediaMenu();
                     userInput = Console.ReadLine();
 
-                    if (userInput == "1") 
+                    switch (userInput)
                     {
-                        // Display All Movies
-                        for (int i = 0; i < movieFile.Movies.Count; i++)
-                        {
-                            //Movie m = JsonConvert.DeserializeObject<Movie>(json);
+                        case "1":
+                            {
+                                // Display All Movies
+                                for (int i = 0; i < movieFile.Movies.Count; i++)
+                                {
+                                    //Movie m = JsonConvert.DeserializeObject<Movie>(json);
 
-                            Movie m = movieFile.Movies[i];
-                            Console.WriteLine(m.displayMovieFormatted());
-                        }
-                    } 
-                    else if (userInput == "2") 
-                    {
-                        // Display All Shows
-                        System.Collections.IList list = showFile.Shows;
-                        for (int i = 0; i < list.Count; i++)
-                        {
-                            //Show s = JsonConvert.DeserializeObject<Show>(json);
+                                    Movie m = movieFile.Movies[i];
+                                    Console.WriteLine(m.Display());
+                                }
 
-                            Show s = (Show)list[i];
-                            Console.WriteLine(s.displayShowFormatted());
-                        }
-                    } 
-                    else if (userInput == "3") 
-                    {
-                        // Display All Videos
-                        System.Collections.IList list = videoFile.Videos;
-                        for (int i = 0; i < list.Count; i++)
-                        {
-                            //Video v = JsonConvert.DeserializeObject<Video>(json);
+                                break;
+                            }
 
-                            Video v = (Video)list[i];
-                            Console.WriteLine(v.displayVideoFormatted());
-                        }
+                        case "2":
+                            {
+                                // Display All Shows
+                                System.Collections.IList list = showFile.Shows;
+                                for (int i = 0; i < list.Count; i++)
+                                {
+                                    //Show s = JsonConvert.DeserializeObject<Show>(json);
+
+                                    Show s = (Show)list[i];
+                                    Console.WriteLine(s.Display());
+                                }
+
+                                break;
+                            }
+
+                        case "3":
+                            {
+                                // Display All Videos
+                                System.Collections.IList list = videoFile.Videos;
+                                for (int i = 0; i < list.Count; i++)
+                                {
+                                    //Video v = JsonConvert.DeserializeObject<Video>(json);
+
+                                    Video v = (Video)list[i];
+                                    Console.WriteLine(v.Display());
+                                }
+
+                                break;
+                            }
                     }
                 }
             } while (userInput == "1" || userInput == "2" || userInput == "3");

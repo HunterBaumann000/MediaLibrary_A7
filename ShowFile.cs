@@ -31,10 +31,10 @@ namespace MovieLibrary_A7
             try
             {
                 // iterate through each show obj until theres no more greater, then add one to ID
-                show.showId = Shows.Max(s => s.showId) + 1;
+                show.mediaId = Shows.Max(s => s.mediaId) + 1;
                 StreamWriter sw = new StreamWriter(filePath, true);
 
-                sw.WriteLine($"ID: {show.showId}, Title: {show.showTitle}, Season{show.showSeason} Ep. {show.showEpisode}, Writers: {string.Join(", ", show.showWriters)}");
+                sw.WriteLine(show.Display());
 
                 sw.Close();
                 
@@ -64,8 +64,8 @@ namespace MovieLibrary_A7
                     string line = sr.ReadLine();
 
                     string[] showLine = line.Split(',');
-                    show.showId = int.Parse(showLine[0]);
-                    show.showTitle = showLine[1];
+                    show.mediaId = int.Parse(showLine[0]);
+                    show.title = showLine[1];
                     show.showSeason = int.Parse(showLine[2]);
                     show.showEpisode = int.Parse(showLine[3]);
                     show.showWriters = showLine[4].Split('|').ToList();
@@ -81,10 +81,14 @@ namespace MovieLibrary_A7
             }
         }
 
+        public ShowFile()
+        {
+        }
+
         public bool hasSameTitle(string showTitle)
         {
             //convert all show objects to lowercase, and if that instance contains the title, return true
-            if (Shows.ConvertAll(s => s.showTitle.ToLower()).Contains(showTitle.ToLower()))
+            if (Shows.ConvertAll(s => s.title.ToLower()).Contains(showTitle.ToLower()))
             {
                 Console.WriteLine("{Title} is a duplicate in the file", showTitle);
                 return true;

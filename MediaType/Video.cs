@@ -1,12 +1,11 @@
 using System;
 using System.Collections.Generic;
+using MediaLibrary_A7.Interfaces;
 
 namespace MovieLibrary_A7.MediaType
 {
-    public class Video
+    public class Video : Media
     {
-        public int videoId { get; set; }
-        public string videoTitle{get; set;}
         public string videoFormat{get; set;}
         public int videoLength{get; set;}
         public List<string> videoRegions { get; set; }
@@ -17,14 +16,9 @@ namespace MovieLibrary_A7.MediaType
             videoRegions = new List<string>();
         }
 
-        public string displayVideoFormatted()
+        public override string Display()
         {
-            return $"Id: {videoId}, Title: {videoTitle}, Format: {videoFormat}, Length: {videoLength} minutes, VideoRegions: {string.Join(", ", videoRegions)}";
-        }
-
-        internal static int Max(Func<object, object> p)
-        {
-            throw new NotImplementedException();
+            return $"Id: {mediaId}, Title: {title}, Format: {videoFormat}, Length: {videoLength} minutes, VideoRegions: {string.Join(", ", videoRegions)}";
         }
     }
 }

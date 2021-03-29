@@ -4,14 +4,8 @@ using MovieLibrary_A7.MediaType;
 
 namespace MovieLibrary_A7
 {
-    public class Menus : IMenus
+    public class Menus
     {
-        private IMenus menus;
-
-        public Menus(IMenus menus)
-        {
-            this.menus = menus;
-        }
 
         public List<Movie> Movies 
         { 
@@ -64,10 +58,10 @@ namespace MovieLibrary_A7
 
             // ask user to input movie title
             System.Console.WriteLine("What is the movie titled");
-            movie.movieTitle = System.Console.ReadLine();
+            movie.title = System.Console.ReadLine();
 
             // check if the title matches another title
-            if (!movieFile.hasSameTitle(movie.movieTitle)){
+            if (!movieFile.hasSameTitle(movie.title)){
                        
                 do
                 {
@@ -75,7 +69,7 @@ namespace MovieLibrary_A7
                     System.Console.WriteLine("Enter a genre. ('.' to stop) ");
                     tempInput = System.Console.ReadLine();
                     //adds to genrelist
-                    movie.movieGenres.Add(tempInput);
+                    movie.genres.Add(tempInput);
                 } 
                 while (tempInput != ".");
 
@@ -96,10 +90,10 @@ namespace MovieLibrary_A7
 
             // ask user to input show title
             System.Console.WriteLine("What is the show titled");
-            show.showTitle = System.Console.ReadLine();
+            show.title = System.Console.ReadLine();
 
             // check if the title matches another title
-            if (!showFile.hasSameTitle(show.showTitle)){
+            if (!showFile.hasSameTitle(show.title)){
                        
                 System.Console.WriteLine("What Season?");
                 show.showSeason = int.Parse(System.Console.ReadLine());
@@ -133,7 +127,7 @@ namespace MovieLibrary_A7
 
             // ask user to input video title
             System.Console.WriteLine("What is the video titled");
-            video.videoTitle = System.Console.ReadLine();
+            video.title = System.Console.ReadLine();
 
             System.Console.WriteLine("What is the video format?");
             video.videoFormat = System.Console.ReadLine();
@@ -142,7 +136,7 @@ namespace MovieLibrary_A7
             video.videoLength = int.Parse(System.Console.ReadLine());
 
             // check if the title matches another title
-            if (!videoFile.hasSameTitle(video.videoTitle)){
+            if (!videoFile.hasSameTitle(video.title)){
                        
                 do
                 {
@@ -157,16 +151,6 @@ namespace MovieLibrary_A7
                 //video never gets created if the title matches another
                 videoFile.AddVideo(video);
             }
-        }
-
-        public void getUserInput()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void getTempUserInput()
-        {
-            throw new System.NotImplementedException();
         }
     }   
 }
