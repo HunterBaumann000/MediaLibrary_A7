@@ -10,15 +10,10 @@ namespace MovieLibrary_A7
     {
         static void Main(string[] args)
         {
-            //setting up file directories
-            string movieFilePath = "movies.csv";
-            string showFilePath = "shows.csv";
-            string videoFilePath = "video.csv";
-
             //class with file-path parameter
-            MovieFile movieFile = new MovieFile(movieFilePath);
-            ShowFile showFile = new ShowFile(showFilePath);
-            VideoFile videoFile = new VideoFile(videoFilePath);
+            MovieFile movieFile = new MovieFile("movies.csv");
+            ShowFile showFile = new ShowFile("shows.csv");
+            VideoFile videoFile = new VideoFile("video.csv");
 
             //menu class
             Menus menus = new Menus();

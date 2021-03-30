@@ -9,8 +9,6 @@ namespace MediaLibrary_A7
 {
     public class Repository : IRepository
     {
-
-
         List<Movie> IRepository.GetMovies { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
         List<Show> IRepository.GetShows { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
         List<Video> IRepository.GetVideos { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
