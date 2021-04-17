@@ -1,74 +1,66 @@
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using MediaLibrary_A7.Interfaces;
-using MovieLibrary_A7;
-using MovieLibrary_A7.MediaType;
-using Newtonsoft.Json;
+using System.Text.Json;
+using MediaLibrary_A7_1.Interfaces;
+using MediaLibrary_A7_1.MediaType;
+using MovieLibrary_A7_1;
+using MovieLibrary_A7_1.MediaType;
 
-namespace MediaLibrary_A7
+namespace MediaLibrary_A7_1
 {
     public class Repository : IRepository
     {
-        List<Movie> IRepository.GetMovies { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-        List<Show> IRepository.GetShows { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-        List<Video> IRepository.GetVideos { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 
         public void AddMovie(Movie movie)
         {
             Movie movie1 = new Movie();
-            movie1.mediaId = GetMovies().Max(s => s.mediaId) + 1;
+            movie1.mediaId = GetAllMovies().Max(s => s.mediaId) + 1;
             movie1.title = movie.title;
             movie1.genres = movie.genres;
 
-            string json = JsonConvert.SerializeObject(movie1);
-
-            throw new System.NotImplementedException();
+            string jsonString = JsonSerializer.Serialize(movie1);
+            File.WriteAllText("FileOutputs/movies.json", jsonString);
         }
 
         public void AddShow(Show show)
         {
+            //parameter for each part of the show?
             Show show1 = new Show();
-            show.mediaId = GetShows().Max(s => s.mediaId) + 1;
+            show.mediaId = GetAllShows().Max(s => s.mediaId) + 1;
             show.showSeason = show.showSeason;
             show.title = show.title;
             show.showEpisode = show.showEpisode;
             show.showWriters = show.showWriters;
 
-            string json = JsonConvert.SerializeObject(show1);
-
-            throw new System.NotImplementedException();
+            string jsonString = JsonSerializer.Serialize(show1);
+            File.WriteAllText("FileOutputs/shows.json", jsonString);
         }
 
         public void AddVideo(Video video)
         {
             Video video1 = new Video();
-            video1.mediaId = GetVideos().Max(s => s.mediaId) + 1;
+            video1.mediaId = GetAllVideos().Max(s => s.mediaId) + 1;
             video1.title = video.title;
             video1.videoFormat = video.videoFormat;
             video1.videoLength = video.videoLength;
             video1.videoRegions = video.videoRegions;
 
-            string json = JsonConvert.SerializeObject(video1);
-
-            throw new System.NotImplementedException();
+            string jsonString = JsonSerializer.Serialize(video1);
+            File.WriteAllText("FileOutputs/videos.json", jsonString);
         }
 
-        private static List<Movie> GetMovies()
+        public List<Movie> GetAllMovies()
         {
-            MovieFile movieFile = new MovieFile();
-            return movieFile.Movies;
+            return new List<Movie>();   
         }
-
-        private static List<Show> GetShows()
+        public List<Show> GetAllShows()
         {
-            ShowFile showfile = new ShowFile();
-            return showfile.Shows;
+            return new List<Show>(); 
         }
-
-        private static List<Video> GetVideos()
+        public List<Video> GetAllVideos()
         {
-            VideoFile videoFile = new VideoFile();
-            return videoFile.Videos;
+            return new List<Video>(); 
         }
     }
 }

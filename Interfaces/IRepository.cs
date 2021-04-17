@@ -1,18 +1,18 @@
 using System.Collections.Generic;
-using MovieLibrary_A7.MediaType;
+using MediaLibrary_A7_1.MediaType;
+using MovieLibrary_A7_1.MediaType;
 
-namespace MediaLibrary_A7.Interfaces
+namespace MediaLibrary_A7_1.Interfaces
 {
     public interface IRepository
     {
-        public List<Movie> GetMovies { get; set; }
         void AddMovie(Movie movie);
-        
-        public List<Show> GetShows { get; set; }
-        void AddShow(Show show);
+        List<Movie> GetAllMovies();
 
-        List<Video> GetVideos { get; set; }
+        void AddShow(Show show);
+        List<Show> GetAllShows();
+
         void AddVideo(Video video);
-        
+        List<Video> GetAllVideos();
     }
 }

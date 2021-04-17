@@ -1,20 +1,14 @@
 using System;
 using System.Collections.Generic;
-using MediaLibrary_A7.Interfaces;
+using MediaLibrary_A7_1.MediaType;
 
-namespace MovieLibrary_A7.MediaType
+namespace MovieLibrary_A7_1.MediaType
 {
     public class Video : Media
     {
         public string videoFormat{get; set;}
         public int videoLength{get; set;}
         public List<string> videoRegions { get; set; }
-
-        // constructor
-        public Video()
-        {
-            videoRegions = new List<string>();
-        }
 
         public override string Display()
         {

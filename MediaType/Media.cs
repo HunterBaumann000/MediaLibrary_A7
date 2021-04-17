@@ -1,7 +1,6 @@
 using System.Collections.Generic;
-using MovieLibrary_A7.MediaType;
 
-namespace MediaLibrary_A7.Interfaces
+namespace MediaLibrary_A7_1.MediaType
 { 
     public abstract class Media
     {
@@ -10,13 +9,6 @@ namespace MediaLibrary_A7.Interfaces
         public string title { get; set; }
         public List<string> genres { get; set; }
         
-
-        // constructor
-         public Media()
-        {
-            genres = new List<string>();
-        }
-
         // default display
         public virtual string Display()
         {
