@@ -1,7 +1,7 @@
 ﻿using System;
-using MovieLibrary_A7_1.MediaType;
+using MediaLibrary_A7_1.MediaType;
 using MediaLibrary_A7_1;
-
+using MediaLibrary_A7_1.Interfaces;
 
 namespace MovieLibrary_A7_1
 {
@@ -9,6 +9,9 @@ namespace MovieLibrary_A7_1
     {
         static void Main(string[] args)
         {
+                
+            Menus menu = new Menus();
+            Repository repo = new Repository();
 
             //declaring userInput so the scanner menu input works
             string userInput = "";
@@ -16,51 +19,51 @@ namespace MovieLibrary_A7_1
             do
             {
                 // displays main menu
-                Menus.DisplayMainMenu();
+                menu.DisplayMainMenu();
                 userInput = Console.ReadLine();
 
                 //nested if-statements for users input
                 if (userInput == "1") 
                 {
                     //displays which MediaType they want to add
-                    Menus.DisplayMediaTypeMenu();
+                    menu.DisplayMediaTypeMenu();
                     userInput = Console.ReadLine();
 
                     switch (userInput)
                     {
                         case "1":
                             //movie menu
-                            Menus.AskUserForMovie();
+                            menu.AskUserForMovie();
                             break;
                         case "2":
                             //show menu
-                            Menus.AskUserForShow();
+                            menu.AskUserForShow();
                             break;
                         case "3":
                             //video menu
-                            Menus.AskUserForVideo();
+                            menu.AskUserForVideo();
                             break;
                     }
                 }
                 else if (userInput == "2")
                 {
                     //displays menu for reading the media from the file
-                    Menus.DisplayReadMediaMenu();
+                    menu.DisplayReadMediaMenu();
                     userInput = Console.ReadLine();
 
                     switch (userInput)
                     {
                         case "1":
                             //movie menu
-                            MediaFile.ReadMoviesFromFile("FileOutputs/movies.csv");
+                            repo.DeserializeMovies();
                             break;
                         case "2":
                             //show menu
-                            MediaFile.ReadShowsFromFile("FileOutputs/shows.csv");
+                            repo.DeserializeShows();
                             break;
                         case "3":
                             //video menu
-                            MediaFile.ReadVideosFromFile("FileOutputs/videos.csv");
+                            repo.DeserializeVideos();
                             break;
                     }
                 }

@@ -1,23 +1,15 @@
 using System.Collections.Generic;
 using MediaLibrary_A7_1.Interfaces;
-using MediaLibrary_A7_1;
-using MovieLibrary_A7_1.MediaType;
+
 using MediaLibrary_A7_1.MediaType;
 
-namespace MovieLibrary_A7_1
+namespace MediaLibrary_A7_1
 {
-    public class Menus
+    public class Menus : MediaContext
     {
-        //For the matching title
-        static MediaFile media = new MediaFile();
+        Repository repo = new Repository();
 
-        //adding to csv
-        static MediaContext context = new Menus();
-
-        //adding to Json
-        static Repository repo = new Repository();
-
-        public static void DisplayMainMenu() {
+        public void DisplayMainMenu() {
             System.Console.WriteLine(" ");
             System.Console.WriteLine("What would you like to do?");
             System.Console.WriteLine("   1.) Add a Media.");
@@ -26,21 +18,22 @@ namespace MovieLibrary_A7_1
             System.Console.Write("Choice: ");
         }
 
-        public static void DisplayMediaTypeMenu() {
+        public void DisplayMediaTypeMenu() {
             System.Console.WriteLine("What type of media would you like?");
             System.Console.WriteLine("   1.) A Movie. ");
             System.Console.WriteLine("   2.) A Show. ");
             System.Console.WriteLine("   3.) A Video. ");
         }
 
-        public static void DisplayReadMediaMenu() {
+        public void DisplayReadMediaMenu() {
             System.Console.WriteLine("What File would you like to read?");
             System.Console.WriteLine("   1.) The Movie File. ");
             System.Console.WriteLine("   2.) The Show File. ");
             System.Console.WriteLine("   3.) The Video File. ");
         }
 
-        public static void AskUserForMovie() {
+        public void AskUserForMovie() {
+            List<string> tempGenres = new List<string>();
 
             // Add movie
             Movie movie = new Movie();
@@ -51,7 +44,7 @@ namespace MovieLibrary_A7_1
             movie.title = System.Console.ReadLine();
 
             // check if the title matches another title
-            if (!media.hasSameTitle(movie.title, "movie")){
+            if (!(hasSameTitle(movie.title, "movie"))){
                        
                 do
                 {
@@ -59,22 +52,24 @@ namespace MovieLibrary_A7_1
                     System.Console.WriteLine("Enter a genre. ('.' to stop) ");
                     tempInput = System.Console.ReadLine();
                     //adds to genrelist
-                    movie.genres.Add(tempInput);
+                    tempGenres.Add(tempInput);
                 } 
                 while (tempInput != ".");
 
+                tempGenres = movie.genres;
                 //movie never gets created if the title matches another
-                context.AddMovie(movie);
-                repo.AddMovie(movie);
+                AddMovie(movie);
+                repo.SerializeMovie(movie);
+
                 //sys out the media they added
                 System.Console.WriteLine(movie.title + " has been added! ");
             }
         }   
 
-        public static void AskUserForShow() {
+        public void AskUserForShow() {
+            List<string> tempWriters = new List<string>();
 
-            // Add show
-            Show show = new Show();
+            Show show = new Show();  
             string tempInput = "";
 
             // ask user to input show title
@@ -82,7 +77,7 @@ namespace MovieLibrary_A7_1
             show.title = System.Console.ReadLine();
 
             // check if the title matches another title
-            if (!media.hasSameTitle(show.title, "show")){
+            if (!hasSameTitle(show.title, "show")){
                        
                 System.Console.WriteLine("What Season?");
                 show.showSeason = int.Parse(System.Console.ReadLine());
@@ -96,20 +91,21 @@ namespace MovieLibrary_A7_1
                     System.Console.WriteLine("Enter a Writer. ('.' to stop) ");
                     tempInput = System.Console.ReadLine();
 
-                    show.showWriters.Add(tempInput);
+                    tempWriters.Add(tempInput);
                             
                 } while (tempInput != ".");
 
+                tempWriters = show.showWriters;
                 //show never gets created if the title matches another
-                context.AddShow(show);
-                repo.AddShow(show);
+                AddShow(show);
+                repo.SerializeShow(show);
                 //sys out the media they added
                 System.Console.WriteLine(show.title + " has been added! ");
             }   
         }
 
-        public static void AskUserForVideo() {
-
+        public void AskUserForVideo() {
+            List<string> tempRegions = new List<string>();
             // Add video
             Video video = new Video();
             string tempInput = "";
@@ -125,7 +121,7 @@ namespace MovieLibrary_A7_1
             video.videoLength = int.Parse(System.Console.ReadLine());
 
             // check if the title matches another title
-            if (!media.hasSameTitle(video.title, "video")){
+            if (!hasSameTitle(video.title, "video")){
                        
                 do
                 {
@@ -133,13 +129,14 @@ namespace MovieLibrary_A7_1
                     System.Console.WriteLine("Enter a Region (type '.' to stop) ");
                     tempInput = System.Console.ReadLine();
 
-                    video.videoRegions.Add(tempInput);
+                    tempRegions.Add(tempInput);
                             
                 } while (tempInput != ".");
            
+                tempRegions = video.videoRegions;
                 //video never gets created if the title matches another
-                context.AddVideo(video);
-                repo.AddVideo(video);
+                AddVideo(video);
+                repo.SerializeVideo(video);
                 //sys out the media they added
                 System.Console.WriteLine(video.title + " has been added! ");
             }

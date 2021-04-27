@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using MediaLibrary_A7_1.MediaType;
 
-namespace MovieLibrary_A7_1.MediaType
+namespace MediaLibrary_A7_1.MediaType
 {
     public class Video : Media
     {

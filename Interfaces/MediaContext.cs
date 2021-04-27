@@ -1,51 +1,86 @@
 using System;
 using System.Collections.Generic;
 using MediaLibrary_A7_1.MediaType;
-using MovieLibrary_A7_1;
-using MovieLibrary_A7_1.MediaType;
 
 namespace MediaLibrary_A7_1.Interfaces
 {
-    public class MediaContext : IMediaFile
+    public class MediaContext : IRepository, ILibrary
     {
-        private readonly IRepository _Repo;
-        public MediaContext(IRepository repository)
-        {
-            _Repo = repository;
-        }
+        public List<Movie> movieList;
+        public List<Show> showList;
+        public List<Video> videoList;
 
         public void AddMovie(Movie movie)
         {
-            _Repo.AddMovie(movie);
+            movieList.Add(movie);
         }
-
         public void AddShow(Show show)
         {
-            _Repo.AddShow(show);
+            showList.Add(show);
         }
         public void AddVideo(Video video)
         {
-            _Repo.AddVideo(video);
+            videoList.Add(video);
         }
-
-        public List<Movie> GetMovies()
+        public List<Movie> GetAllMovies()
         {
-            return _Repo.GetAllMovies();
+            var retList = new List<Movie>();
+            foreach(Movie m in movieList)
+            {
+                Movie movie = m;
+                retList.Add(movie);
+            }
+            return retList;
         }
-
-        public List<Show> GetShows()
+        public List<Show> GetAllShows()
         {
-            return _Repo.GetAllShows();
+            var retList = new List<Show>();
+            foreach(Show s in showList)
+            {
+                Show show = s;
+                retList.Add(show);
+            }
+            return retList;
         }
-
-        public List<Video> GetVideos()
+        public List<Video> GetAllVideos()
         {
-            return _Repo.GetAllVideos();
+            var retList = new List<Video>();
+            foreach(Video v in videoList)
+            {
+                Video video = v;
+                retList.Add(video);
+            }
+            return retList;
         }
-
-        public static implicit operator MediaContext(Menus v)
+        public bool hasSameTitle(string title, string mediaType)
         {
-            throw new NotImplementedException();
+            // bool match string
+            if(mediaType.Equals(("movie"))) {
+                //convert all movie objects to lowercase, and if that instance contains the title, return true
+                if (GetAllMovies().ConvertAll(m => m.title.ToLower()).Contains(title.ToLower())){
+                    Console.WriteLine("{Title} is a duplicate in the file", title);
+                    return true;
+                }
+                return false;
+            }
+            else if(mediaType.Equals(("video"))) {
+                //convert all video objects to lowercase, and if that instance contains the title, return true
+                if (GetAllVideos().ConvertAll(v => v.title.ToLower()).Contains(title.ToLower()))
+                {
+                    Console.WriteLine("{Title} is a duplicate in the file", title);
+                    return true;
+                }
+                return false;
+            }
+            else if(mediaType.Equals(("show"))){
+                //convert all show objects to lowercase, and if that instance contains the title, return true
+                if (GetAllShows().ConvertAll(s => s.title.ToLower()).Contains(title.ToLower()))
+                {
+                    Console.WriteLine("{Title} is a duplicate in the file", title);
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

@@ -11,5 +11,11 @@ namespace MediaLibrary_A7_1.MediaType
             //formatted fields for console.writeLine 
             return $"Id: {mediaId}, Title: {title}, Genres: {string.Join(", ", genres)}";
         }
+
+        public Movie(){
+            this.mediaId = mediaId;
+            this.title = title;
+            this.genres = genres;
+        }
     }
 }
