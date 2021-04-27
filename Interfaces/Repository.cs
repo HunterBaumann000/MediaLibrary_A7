@@ -97,7 +97,7 @@ namespace MediaLibrary_A7_1
             StreamReader r = new StreamReader("FileOutputs/movies.json");
             string jsonString = r.ReadToEnd();
             Movie m = JsonConvert.DeserializeObject<Movie>(jsonString);
-            Console.WriteLine(m.Display());
+            Console.WriteLine(m.mediaId + " | " + m.title + " | " + m.genres);
         }
 
         public void DeserializeShows()
@@ -108,7 +108,7 @@ namespace MediaLibrary_A7_1
             StreamReader r = new StreamReader("FileOutputs/shows.json");
             string jsonString = r.ReadToEnd();
             Show s = JsonConvert.DeserializeObject<Show>(jsonString);
-            Console.WriteLine(s.Display());
+            Console.WriteLine(s.mediaId + " | " + s.title + " | " + s.showWriters);
         }
 
         public void DeserializeVideos()
@@ -119,7 +119,7 @@ namespace MediaLibrary_A7_1
             StreamReader r = new StreamReader("FileOutputs/videos.json");
             string jsonString = r.ReadToEnd();
             Video v = JsonConvert.DeserializeObject<Video>(jsonString);
-            Console.WriteLine(v.Display());
+            Console.WriteLine(v.mediaId + " | " + v.title + " | " + v.videoRegions);
         }
         
     }

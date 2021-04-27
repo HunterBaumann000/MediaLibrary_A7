@@ -6,9 +6,9 @@ namespace MediaLibrary_A7_1.Interfaces
 {
     public class MediaContext : IRepository, ILibrary
     {
-        public List<Movie> movieList;
-        public List<Show> showList;
-        public List<Video> videoList;
+        public static List<Movie> movieList = new List<Movie>();
+        public static List<Show> showList = new List<Show>();
+        public static List<Video> videoList = new List<Video>();
 
         public void AddMovie(Movie movie)
         {
@@ -24,33 +24,36 @@ namespace MediaLibrary_A7_1.Interfaces
         }
         public List<Movie> GetAllMovies()
         {
-            var retList = new List<Movie>();
-            foreach(Movie m in movieList)
-            {
-                Movie movie = m;
-                retList.Add(movie);
-            }
-            return retList;
+            return movieList;
+            // var retList = new List<Movie>();
+            // foreach(Movie m in movieList)
+            // {
+            //     Movie movie = m;
+            //     retList.Add(movie);
+            // }
+            // return retList;
         }
         public List<Show> GetAllShows()
         {
-            var retList = new List<Show>();
-            foreach(Show s in showList)
-            {
-                Show show = s;
-                retList.Add(show);
-            }
-            return retList;
+            return showList;
+            // var retList = new List<Show>();
+            // foreach(Show s in showList)
+            // {
+            //     Show show = s;
+            //     retList.Add(show);
+            // }
+            // return retList;
         }
         public List<Video> GetAllVideos()
         {
-            var retList = new List<Video>();
-            foreach(Video v in videoList)
-            {
-                Video video = v;
-                retList.Add(video);
-            }
-            return retList;
+            return videoList;
+            // var retList = new List<Video>();
+            // foreach(Video v in videoList)
+            // {
+            //     Video video = v;
+            //     retList.Add(video);
+            // }
+            // return retList;
         }
         public bool hasSameTitle(string title, string mediaType)
         {
