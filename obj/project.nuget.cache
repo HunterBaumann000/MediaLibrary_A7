@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "e8+IkVAUxu4ooBWV2MnTOoCltlycumNWA31eZuoMXtAfZ22xeHj2YtAYePzhw/XR1aaWCVD0m69HfmNNcE4IlQ==",
+  "dgSpecHash": "Y1KjyWfeSuZdI8KKvXjJtEWCXgoVpA670kqf2a45/MGtH1nro1378t/t0vTa9JqSFM82pea+Vw7/pZEEBsaQ0Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Owner\\Desktop\\MediaLibrary_A7-1\\MediaLibrary_A7-1.csproj",
+  "projectFilePath": "c:\\Users\\Owner\\Desktop\\MediaLibrary_A7-1\\MediaLibrary_A7-1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Owner\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
   ],

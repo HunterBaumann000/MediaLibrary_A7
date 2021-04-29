@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Owner\\Desktop\\MediaLibrary_A7-1\\MediaLibrary_A7-1.csproj": {}
+    "c:\\Users\\Owner\\Desktop\\MediaLibrary_A7-1\\MediaLibrary_A7-1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Owner\\Desktop\\MediaLibrary_A7-1\\MediaLibrary_A7-1.csproj": {
+    "c:\\Users\\Owner\\Desktop\\MediaLibrary_A7-1\\MediaLibrary_A7-1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Owner\\Desktop\\MediaLibrary_A7-1\\MediaLibrary_A7-1.csproj",
+        "projectUniqueName": "c:\\Users\\Owner\\Desktop\\MediaLibrary_A7-1\\MediaLibrary_A7-1.csproj",
         "projectName": "MediaLibrary_A7-1",
-        "projectPath": "C:\\Users\\Owner\\Desktop\\MediaLibrary_A7-1\\MediaLibrary_A7-1.csproj",
+        "projectPath": "c:\\Users\\Owner\\Desktop\\MediaLibrary_A7-1\\MediaLibrary_A7-1.csproj",
         "packagesPath": "C:\\Users\\Owner\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Owner\\Desktop\\MediaLibrary_A7-1\\obj\\",
+        "outputPath": "c:\\Users\\Owner\\Desktop\\MediaLibrary_A7-1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Owner\\AppData\\Roaming\\NuGet\\NuGet.Config"

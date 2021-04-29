@@ -21,7 +21,7 @@ namespace MediaLibrary_A7_1
                 m.genres = movie.genres;
 
                 string jsonString = System.Text.Json.JsonSerializer.Serialize(movie);
-                File.WriteAllText("FileOutputs/movies.json", jsonString);
+                File.AppendAllTextAsync("FileOutputs/movies.json", jsonString);
             }
            //var json = System.Text.Json.JsonSerializer.Serialize(GetAllMovies());
 
@@ -45,7 +45,7 @@ namespace MediaLibrary_A7_1
                 s.showWriters = show.showWriters;
 
                 string jsonString = System.Text.Json.JsonSerializer.Serialize(show);
-                File.WriteAllText("FileOutputs/shows.json", jsonString);
+                File.AppendAllTextAsync("FileOutputs/shows.json", jsonString);
             }
 
 
@@ -73,7 +73,7 @@ namespace MediaLibrary_A7_1
                 v.videoRegions = video.videoRegions;
 
                 string jsonString = System.Text.Json.JsonSerializer.Serialize(video);
-                File.WriteAllText("FileOutputs/videos.json", jsonString);
+                File.AppendAllTextAsync("FileOutputs/videos.json", jsonString);
             }
 
 
